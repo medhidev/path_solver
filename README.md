@@ -25,29 +25,19 @@
     <img src="https://img.shields.io/github/issues/medhidev/path_solver">
 </p>
 
-
-<!-- <p align="center">
-  <a href="#key-features">Key Features</a> •
-  <a href="#how-to-use">How To Use</a> •
-  <a href="#download">Download</a> •
-  <a href="#credits">Credits</a> •
-  <a href="#related">Related</a> •
-  <a href="#license">License</a>
-</p> -->
-
 ![GIF à venir sur l'utilisation du logiciel]()
 
 ## Fonctionnalités
 
 - [ ] Interface utilisateur avec Pygame
-- [ ] Possibilité de dessiner
+- [x] Possibilité de dessiner
 - [ ] Implémentation d'un algorithme
 - [ ] Animation de l'algorithme
 - [ ] Résolution visuelle
 
 ## Setup du projet
 
-Pour utiliser cette application il vous faut au préalable installer [Python](https://www.python.org/downloads/).<br>
+Pour utiliser cette application, il vous faut au préalable installer [Python](https://www.python.org/downloads/).<br>
 Une fois installer lancer l'outil [Git](https://git-scm.com), puis taper les commandes suivantes.
 
 ```bash
@@ -63,7 +53,7 @@ $ pip install pygame
 ```
 
 > <u>Note Utile</u> <br>
-> L'application possède un executable, si votre utilisation se limiter à l'utilisation du logicielle, il n'est donc pas nécessaire d'installer Git (Mais je vous recommande au moins Python pour éviter tout problème potentiel).
+> L'application possède un exécutable, si votre utilisation se limitait à l'utilisation du logicielle, il n'est donc pas nécessaire d'installer Git (Mais je vous recommande au moins Python pour éviter tout problème potentiel).
 
 
 ## Téléchargement
@@ -79,9 +69,10 @@ Cette application est basé sur les paquetage python ci dessous :
 - [Pygame](https://www.pygame.org/)
 
 
-## Soutient
+## Soutien
 
-Si vous avez aimé l'idée du projet et que vous souhaitez me soutenir pour mon travail ou mes autres projets. Je 
+Si vous appréciez l’idée de ce projet et souhaitez encourager mon travail ainsi que mes futurs projets, vous pouvez me soutenir en faisant un don. Votre retour et vos encouragements me motivent à partager et à innover.
+Donc un immense merci d’avance à toutes celles et ceux qui prendront le temps de contribuer 🙏✨
 
 <a href="http://coff.ee/medhidev" target="_blank"><img src="https://github.com/amitmerchant1990/electron-markdownify/raw/master/app/img/bmc-button.png" alt="Buy Me A Coffee" style="height: 41px !important;width: 174px !important;box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;" ></a>
 

@@ -1,78 +1,114 @@
-# Désactiver le message en console
-from os import environ
-environ['PYGAME_HIDE_SUPPORT_PROMPT'] = '1'
+import os
+os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = '1'
 
-# Example file showing a circle moving on screen
 import pygame
 import config
-import random
 
-# pygame setup
+# -------- Configuration Application --------
 pygame.init()
+pygame.display.set_caption('Path Solver')
+pygame.display.set_icon(pygame.image.load('images/logo.png'))
 screen = pygame.display.set_mode((config.size, config.size))
 clock = pygame.time.Clock()
 running = True
 
-center = pygame.Vector2(screen.get_width() / 2, screen.get_height() / 2)
+# -------- Méthodes --------
+grid_size = config.size // config.cell
+surface = pygame.Surface((config.size, config.size))
 
-for _ in range (20):
-    print([])
-    config.matrix[random.randint(0, config.size-1)][random.randint(0, config.size-1)] = 1
+def draw_grid():
+    screen.fill('black')
+    for i in range(grid_size):
+        for j in range(grid_size):
+            if config.matrix[i][j] == 0:
+                color = "#4A4A4A"
+            elif config.matrix[i][j] == 1:
+                color = "#062839"
+            elif config.matrix[i][j] == 2:
+                color = "#1bed53"
+            elif config.matrix[i][j] == 3:
+                color = "#edb81b"
+
+            cube = pygame.Rect(i*config.cell, j*config.cell, config.cell, config.cell)
+            pygame.draw.rect(surface, color, cube)
+            pygame.draw.rect(surface, 'black', cube, 1)
+
+def set_val(val):
+    pos = pygame.mouse.get_pos()
+    i = pos[0] // config.cell
+    j = pos[1] // config.cell
+    config.matrix[i][j] = val
+
+# -------- Boucle de jeu --------
+held = False
+walls = []
+init_points = []
+depart = False
+arrivee = False
+
+draw_grid()
 
 while running:
     clock.tick(60)
+    screen.fill('black')
 
-    # Events Listener
+    # ------ Ecouteurs d'Events ------
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
 
-    screen.fill("#404040")
+        elif event.type == pygame.MOUSEBUTTONDOWN:
+            if event.button == 1:
+                held = True
+            elif event.button == 3:
+                pos = pygame.mouse.get_pos()
 
-    # config.draw_matrix(screen)
-    color = 'gray'
-    for i in range(config.size):
-        for j in range(config.size):
-            if (config.matrix[i][j] == 0):
-                color = '#eb4034'
-            elif (config.matrix[i][j] == 1):
-                color = '#1da859'
-            pygame.draw.rect(screen, color, (i, j, config.cell, config.cell))
+                if not depart:
+                    set_val(2)
+                    init_points.append(pos)
+                    depart = True
 
-    # pygame.draw.circle(screen, "red", player_pos, 40)
-    
+                elif depart and not arrivee:
+                    set_val(3)
+                    init_points.append(pos)
+                    arrivee = True
+
+                draw_grid()
+
+        elif pygame.key.get_pressed()[pygame.K_BACKSPACE]:
+            # Suppressions des murs
+            for w in walls:
+                i = w[0] // config.cell
+                j = w[1] // config.cell
+                config.matrix[i][j] = 0
+
+            for p in init_points:
+                i = p[0] // config.cell
+                j = p[1] // config.cell
+                config.matrix[i][j] = 0
+
+            # Etat init
+            depart = False
+            arrivee = False
+
+            draw_grid()
 
 
-    # keys = pygame.key.get_pressed()
-    # if keys[pygame.K_w]:
-    #     player_pos.y -= 300 * dt
-    # if keys[pygame.K_s]:
-    #     player_pos.y += 300 * dt
-    # if keys[pygame.K_a]:
-    #     player_pos.x -= 300 * dt
-    # if keys[pygame.K_d]:
-    #     player_pos.x += 300 * dt
+                
+        elif event.type == pygame.MOUSEBUTTONUP:
+            if event.button == 1:
+                held = False
 
+    if held:
+        pos = pygame.mouse.get_pos()
+        if pos not in walls:
+            walls.append(pos)
+            set_val(1)
+            
+        draw_grid()
 
-
-    # Display
+    # Mettre à jour l'affichage de l'application
+    screen.blit(surface, (0, 0))
     pygame.display.flip()
-
-# def color_matrix():
-#     for i in range(config.size):
-#         for j in range(i):
-#             match((i, j)):
-#                 # Départ - Mur - Arrivée
-#                 case 0 :
-#                     pygame.draw.rect(screen, '#eb4034' , (50, 50, 100, 100))
-#                     break
-#                 case 1:
-#                     print('mur')
-#                     break
-#                 case -1:
-#                     print('fin')
-#                     break
-
-#             # Couleurs cases Algorithme
 
 pygame.quit()
