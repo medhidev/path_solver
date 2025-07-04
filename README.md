@@ -29,7 +29,7 @@
 
 ## Fonctionnalités
 
-- [ ] Interface utilisateur avec Pygame
+- [x] Interface utilisateur avec Pygame
 - [x] Possibilité de dessiner
 - [ ] Implémentation d'un algorithme
 - [ ] Animation de l'algorithme
@@ -63,10 +63,12 @@ Le lien direct vers l'installation de l'application path solver.
     <a href="#"><img src="https://img.shields.io/badge/T%C3%A9l%C3%A9charger Path Solver-00994C?style=for-the-badge"></a>
 </p>
 
-## Outils
+## Ressources
 
-Cette application est basé sur les paquetage python ci dessous :
-- [Pygame](https://www.pygame.org/)
+Pour réaliser cette application, je me suis appuyé sur les ressources suivantes :
+- [Pygame](https://www.pygame.org/docs/)
+- [StackOverflow](https://stackoverflow.com/questions/)
+- [Convert GUI](https://www.youtube.com/watch?v=p3tSLatmGvU/)
 
 
 ## Soutien
