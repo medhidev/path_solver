@@ -7,9 +7,6 @@
   <br>
 </h1>
 
-<!-- Titre -->
-<h4 align="center">Projet de résolution de chemin</h4>
-
 <!-- Badges -->
 <p align="center">
     <!-- Informations projet -->
@@ -25,15 +22,23 @@
     <img src="https://img.shields.io/github/issues/medhidev/path_solver">
 </p>
 
-![GIF à venir sur l'utilisation du logiciel]()
+## Présentation
+
+Ce projet propose une interface interactive de résolution de chemin sur une grille. L’utilisateur peut placer des murs, définir un point de départ et d’arrivée, puis visualiser le plus court chemin trouvé automatiquement selon l’algorithme choisi. L’objectif est de rendre l’exploration des algorithmes de pathfinding accessible, visuelle et intuitive.
+<br><br>
+
+<!-- Image de presentation -->
+<p align="center">
+    <img src="presentation/presentation.gif">
+<p>
 
 ## Fonctionnalités
 
-- [x] Interface utilisateur avec Pygame
+- [x] Interface utilisateur avec Pygame (choix algorithme)
 - [x] Possibilité de dessiner
-- [ ] Implémentation d'un algorithme
-- [ ] Animation de l'algorithme
-- [ ] Résolution visuelle
+- [ ] Implémentation d'algorithmes
+- [ ] Animation de résolution pour chaque algorithme
+- [ ] 
 
 ## Setup du projet
 
@@ -67,8 +72,9 @@ Le lien direct vers l'installation de l'application path solver.
 
 Pour réaliser cette application, je me suis appuyé sur les ressources suivantes :
 - [Pygame](https://www.pygame.org/docs/)
-- [Convertion py to exe](https://stackoverflow.com/questions/31836104/pyinstaller-and-onefile-how-to-include-an-image-in-the-exe-file)
-- [Convert GUI](https://www.youtube.com/watch?v=p3tSLatmGvU/)
+- [PyInstaller](https://pyinstaller.org/en/stable/)
+- [StackOverflow Convertion py to exe](https://stackoverflow.com/questions/31836104/pyinstaller-and-onefile-how-to-include-an-image-in-the-exe-file)
+- [Convert GUI video](https://www.youtube.com/watch?v=p3tSLatmGvU/)
 
 
 ## Soutien
