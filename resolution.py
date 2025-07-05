@@ -5,50 +5,29 @@ import pygame
 import config
 import menu
 
-def resolution(screen, algo):
+# Algorithmes
+from algorithm.dijkstra import *
+from algorithm.a_star import *
+from algorithm.dfs import *
+from algorithm.bfs import *
+from algorithm.bidirsearch import *
+
+def resolution(screen, algo:str):
     # -------- Configuration Application --------
-    # pygame.display.set_caption('Path Solver')
-    # pygame.display.set_icon(pygame.image.load('images/logo.png'))
-    # screen = pygame.display.set_mode((config.size, config.size))
+
     clock = pygame.time.Clock()
     running = True
 
     # -------- Méthodes --------
-    grid_size = config.size // config.cell
     surface = pygame.Surface((config.size, config.size))
-
-    def draw_grid():
-        screen.fill('black')
-        for i in range(grid_size):
-            for j in range(grid_size):
-                if config.matrix[i][j] == 0:
-                    color = "#4A4A4A"
-                elif config.matrix[i][j] == 1:
-                    color = "#062839"
-                elif config.matrix[i][j] == 2:
-                    color = "#1bed53"
-                elif config.matrix[i][j] == 3:
-                    color = "#edb81b"
-
-                cube = pygame.Rect(i*config.cell, j*config.cell, config.cell, config.cell)
-                pygame.draw.rect(surface, color, cube)
-                pygame.draw.rect(surface, 'black', cube, 1)
-
-    def set_val(val):
-        pos = pygame.mouse.get_pos()
-        i = pos[0] // config.cell
-        j = pos[1] // config.cell
-        config.matrix[i][j] = val
 
     # -------- Boucle de jeu --------
     held = False
     walls = []
     init_points = []
-    depart = False
-    arrivee = False
     out = ''
 
-    draw_grid()
+    config.draw_grid(surface)
     while running:
         clock.tick(60)
         screen.fill('black')
@@ -65,52 +44,52 @@ def resolution(screen, algo):
                 elif event.button == 3:
                     pos = pygame.mouse.get_pos()
 
-                    if not depart:
-                        set_val(2)
-                        init_points.append(pos)
-                        depart = True
+                    if len(config.start) == 0:
+                        config.set_val(pos, 2)
+                        config.start = pos
+                        init_points.append(config.start)
 
-                    elif depart and not arrivee:
-                        set_val(3)
-                        init_points.append(pos)
-                        arrivee = True
+                    elif len(config.start) != 0 and len(config.end) == 0:
+                        config.set_val(pos, 3)
+                        config.end = pos
+                        init_points.append(config.end)
 
-                    draw_grid()
+                    config.draw_grid(surface)
 
             elif event.type == pygame.MOUSEBUTTONUP:
                 if event.button == 1:
                     held = False
 
             elif pygame.key.get_pressed()[pygame.K_BACKSPACE]:
-                # Suppressions des murs
-                for w in walls:
-                    i = w[0] // config.cell
-                    j = w[1] // config.cell
-                    config.matrix[i][j] = 0
 
-                for p in init_points:
-                    i = p[0] // config.cell
-                    j = p[1] // config.cell
-                    config.matrix[i][j] = 0
+                # Reset complet de la matrice
+                for i in range(config.grid_size):
+                    for j in range(config.grid_size):
+                        if config.matrix[i][j] != 0:
+                            config.matrix[i][j] = 0
 
-                # Etat init
-                depart = False
-                arrivee = False
-
-                draw_grid()
+                # Mise à jour de l'affichage
+                config.draw_grid(surface)
 
             elif pygame.key.get_pressed()[pygame.K_ESCAPE]:
                 menu.menu(screen)
 
+            elif pygame.key.get_pressed()[pygame.K_RETURN]:
+                print(algo.lower())
+                if algo.lower() == 'dijkstra':
+                    dijkstra(surface)
+
+                
+                        
 
 
         if held:
             pos = pygame.mouse.get_pos()
             if pos not in walls:
                 walls.append(pos)
-                set_val(1)
+                config.set_val(pos, 1)
         
-            draw_grid()
+            config.draw_grid(surface)
 
         # Mettre à jour l'affichage de l'application
         screen.blit(surface, (0, 0))

@@ -11,19 +11,20 @@ import resolution
 pygame.init()
 pygame.display.set_caption(config.app_name)
 pygame.display.set_icon(pygame.image.load(config.icon))
-screen = pygame.display.set_mode((config.size, config.size))
 running = True
 
 # -------- Boucle de jeu --------
 
 while running:
-    algo_menu = menu.menu(screen)
+    algo_menu = menu.menu(config.screen)
 
     #  Cas aucun algorithme
     if len(algo_menu) == 0:
         running = False
     else :
-        resolv = resolution.resolution(screen, algo_menu)
+        resolv = resolution.resolution(config.screen, algo_menu)
+
+        # Rectification à venir
         if resolv == 'exit':
             running = False
 

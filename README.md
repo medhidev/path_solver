@@ -11,7 +11,7 @@
 <p align="center">
     <!-- Informations projet -->
     <img src="https://img.shields.io/badge/version-1.0-00994C">
-    <img src="https://img.shields.io/badge/python-3.11.9-f5e042?logo=python">
+    <img src="https://img.shields.io/badge/python-3.13.5-f5e042?logo=python">
     <img src="https://badgen.net/github/branches/medhidev/path_solver?color=FAA627">
     <img src="https://img.shields.io/github/license/medhidev/path_solver">
     <br>
@@ -34,11 +34,10 @@ Ce projet propose une interface interactive de résolution de chemin sur une gri
 
 ## Fonctionnalités
 
-- [x] Interface utilisateur avec Pygame (choix algorithme)
-- [x] Possibilité de dessiner
-- [ ] Implémentation d'algorithmes
-- [ ] Animation de résolution pour chaque algorithme
-- [ ] 
+-  Interface utilisateur avec Pygame (choix algorithme)
+- Possibilité de dessiner
+- Implémentation d'algorithmes
+- Animation de résolution pour chaque algorithme
 
 ## Setup du projet
 
@@ -55,10 +54,16 @@ $ cd path_solver
 # Installation des dépendances
 $ pip install pygame
 
+# Lancement du projet
+$ python -m main.py
+
 ```
 
-> <u>Note Utile</u> <br>
-> L'application possède un exécutable, si votre utilisation se limitait à l'utilisation du logicielle, il n'est donc pas nécessaire d'installer Git (Mais je vous recommande au moins Python pour éviter tout problème potentiel).
+<!-- Informations -->
+<label style='color:orange'>
+  <u>Note Utile</u> <br>
+  L'application possède un exécutable, si votre utilisation se limitait à l'utilisation du logicielle, il n'est donc pas nécessaire d'installer Git (Mais je vous recommande au moins Python pour éviter tout problème potentiel).
+</label>
 
 
 ## Téléchargement
