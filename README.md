@@ -67,7 +67,7 @@ Le lien direct vers l'installation de l'application path solver.
 
 Pour réaliser cette application, je me suis appuyé sur les ressources suivantes :
 - [Pygame](https://www.pygame.org/docs/)
-- [StackOverflow](https://stackoverflow.com/questions/)
+- [Convertion py to exe](https://stackoverflow.com/questions/31836104/pyinstaller-and-onefile-how-to-include-an-image-in-the-exe-file)
 - [Convert GUI](https://www.youtube.com/watch?v=p3tSLatmGvU/)
 
 

@@ -1,3 +1,6 @@
 __pycache__/
 work/
 output/
+Path_Solver.spec
+build/
+dist/
