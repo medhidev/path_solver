@@ -65,7 +65,9 @@ $ pip install pygame
 
 Le lien direct vers l'installation de l'application path solver.
 <p align="center">
-    <a href="#"><img src="https://img.shields.io/badge/T%C3%A9l%C3%A9charger Path Solver-00994C?style=for-the-badge"></a>
+    <a href="https://github.com/medhidev/path_solver/releases/download/alpha/Path_Solver.exe">
+      <img src="https://img.shields.io/badge/T%C3%A9l%C3%A9charger Path Solver-00994C?style=for-the-badge">
+    </a>
 </p>
 
 ## Ressources
